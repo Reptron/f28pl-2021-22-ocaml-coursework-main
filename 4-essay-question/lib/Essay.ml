@@ -34,6 +34,10 @@
    Do this in a literate programming style to include executable code
    to demonstrate the concepts you're writing about, e.g. *)
 
+(* Ocaml is a programming language that supoorts a funtional style. A function maps an input to an output. The same input produces 
+the same output, meaning extra infromation is non-exsistant and unmainatained, by functions, between usages of the function.
+ *) 
+
 (* The following function adds two numbers together. It has types ... *)
 
 let add (x:int) (y:int) : int = x + y

@@ -1,6 +1,6 @@
 (* Coursework template
 
-   My Name here, My UserID          <--- confirm who you are 
+   Rohan Samuel, H00335119          <--- confirm who you are 
    F28PL Coursework 2, OCaml        <--- confirm what you're submitting
 
    You may assume variables and functions defined in earlier questions
@@ -32,8 +32,8 @@ let rec string_of_exp : exp -> string =
   function
   | Zero       -> "0"  (* Do _not_ print output to the screen! The
                           type of this function is `exp -> string`. *)
-  | Var x      -> failwith "not implemented yet"
-  | Add (a, b) -> failwith "not implemented yet"
+  | Var x      -> "" ^ x
+  | Add (a, b) -> "(" ^ string_of_exp a ^ "+" ^ string_of_exp b ^ ")"
 
 (* An environment is a list mapping variable names to integers *)
 type env = (string * int) list
@@ -44,9 +44,9 @@ type env = (string * int) list
 let rec eval : env -> exp -> int =
   fun env ->
   function
-  | Zero       -> failwith "not implemented yet"
-  | Var x      -> failwith "not implemented yet"
-  | Add (a, b) -> failwith "not implemented yet"
+  | Zero       -> 0
+  | Var x      -> List.assoc x env
+  | Add (a, b) -> eval env a + eval env b
 
 
 (* The standard laws that hold of expressions:
@@ -86,15 +86,15 @@ type var_list = string list
  *)
 let rec inject : var_list -> exp =
   function
-  | []        -> failwith "not implemented yet"
-  | (x :: xs) -> failwith "not implemented yet"
+  | []        -> Zero
+  | (x :: xs) -> Add(Var (x), inject xs)
 
 (* Write a function that flattens an expression to a list of variables *)
 let rec flatten : exp -> var_list =
   function
-  | Zero       -> failwith "not implemented yet"
-  | Var x      -> failwith "not implemented yet"
-  | Add (a, b) -> failwith "not implemented yet"
+  | Zero       -> ["0"]
+  | Var x      -> ["" ^ x]
+  | Add (a, b) -> flatten a @ flatten b
 
 (* We can now compare expressions for equivalence by checking whether
    their flattenings are equal *)
@@ -127,11 +127,17 @@ let compare_exps : exp -> exp -> bool =
 
    (c.f. merge sort in f28pl-2020-21-ocaml-exercises)
 *)
+let rec merge : 'a list -> 'a list -> 'a list =
+fun xs ys ->
+match xs, ys with xs, [] -> xs |
+[], ys -> ys |
+x :: xs, y :: ys -> if x < y then x :: merge xs (y :: ys) else y :: merge (x :: xs) ys;;
+
 let rec flatten_sorted : exp -> var_list =
   function
-  | Zero       -> failwith "not implemented yet"
-  | Var x      -> failwith "not implemented yet"
-  | Add (a, b) -> failwith "not implemented yet"
+  | Zero       -> ["0"]
+  | Var x      -> ["" ^ x]
+  | Add (a, b) -> failwith "not impl"
 
 (* compare expressions for equivalence (taking into account
    commutativity) *)

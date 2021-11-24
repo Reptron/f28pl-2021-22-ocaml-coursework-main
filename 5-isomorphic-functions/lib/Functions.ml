@@ -1,6 +1,6 @@
 (* Coursework template
 
-   My Name here, My UserID          <--- confirm who you are 
+   Rohan Samuel, H00335119          <--- confirm who you are 
    F28PL Coursework 2, OCaml        <--- confirm what you're submitting
 
    You may assume variables and functions defined in earlier questions
@@ -21,9 +21,9 @@
 (* implement the function *)
 let curry : (('a * 'b) -> 'c) -> 'a -> 'b -> 'c =
   fun f x y ->
-  failwith "not implemented yet"
+  f (x, y);; (*2 values are added*)
 
 (* implement the function *)
 let uncurry : ('a -> 'b -> 'c) -> ('a * 'b) -> 'c =
   fun f p ->
-  failwith "not implemented yet"
+  f (fst p)(snd p);; (*Returns function with the first and second element of the tuple f *)

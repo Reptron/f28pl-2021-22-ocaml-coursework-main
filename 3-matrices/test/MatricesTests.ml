@@ -114,7 +114,7 @@ let matrix_four_rows_four_columns = [[1; 2; 3; 4]; [2; 3; 4; 5]; [3;4;5;6]; [1; 
 (* test for the correct shape of matrix_four_rows_four_columns *)
 let matrix_shape_four_rows_four_columns _test_ctxt =
   (* TODO *)
-  assert_failure "not implemented yet"
+  assert_equal (4,4) (matrix_shape matrix_four_rows_four_columns)
 
 (* test adding matrix_one_row_zero_columns to itself *)
 let matrix_add_empties _test_ctxt =
@@ -277,7 +277,7 @@ let associative_multiplication =
               ~print:string_of_matrices3
               (Gen.triple matrix_gen matrix_gen matrix_gen))
     (* TODO *)
-    (fun (m1,m2,m3) -> false)
+    (fun (m1,m2,m3) -> matrix_mult m1 (matrix_mult m2 m3) = matrix_mult (matrix_mult m1 m2) m3)
 
 (* A( B + C ) = AB + AC
    (Distributive law of matrix algebra)
@@ -288,7 +288,7 @@ let distributive_multiplication =
               ~print:string_of_matrices3
               (Gen.triple matrix_gen matrix_gen matrix_gen))
     (* TODO *)
-    (fun (m1,m2,m3) -> false)
+    (fun (m1,m2,m3) -> matrix_mult m1 (matrix_add m2 m3) = matrix_add (matrix_mult m1 m2) (matrix_mult m1 m3))
 
 (* numeric property tests *)
 
@@ -316,7 +316,7 @@ let multiplcation_zeros =
                  matrix_zeros_gen (* m2 *)
   ))
     (* TODO *)
-    (fun (m1,m2) -> false)
+    (fun (m1,m2) -> matrix_mult m1 m2 = m2)
 
 
 (* list of all property tests *)

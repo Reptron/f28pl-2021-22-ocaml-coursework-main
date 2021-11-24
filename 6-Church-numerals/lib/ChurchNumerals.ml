@@ -1,6 +1,6 @@
 (* Coursework template
 
-   My Name here, My UserID          <--- confirm who you are 
+   Rohan Samuel, H00335119          <--- confirm who you are 
    F28PL Coursework 2, OCaml        <--- confirm what you're submitting
 
    You may assume variables and functions defined in earlier questions
@@ -24,12 +24,12 @@ type church_numeral = (int -> int) -> int -> int
 (* i2c i f x = f (f (.... f x)) (where f is applied i times) *)
 let rec i2c : int -> church_numeral =
   function
-  | 0 -> fun f x -> failwith "not implemented yet"
-  | i -> fun f x -> failwith "not implemented yet"
+  | 0 -> fun f x -> x                     (*Return x *)
+  | i -> fun f x -> f(i2c (i - 1) f x);;  (*Function applied recursively using i - 1 *)
 
 (* Pass the increment function and 0 into the Church numeral, so that
    every application of f increases the output by 1. As the starting
    point is 0, this will count the number of times f was applied to x,
    thus yielding the integer that the Church numeral represents. *)
 let c2i : church_numeral -> int =
-  fun c -> failwith "not implemented yet"
+  fun c -> c(fun a -> 1 + a) 0;;

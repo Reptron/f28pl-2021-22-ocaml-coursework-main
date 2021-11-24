@@ -1,6 +1,6 @@
 (* Coursework template
 
-   My Name here, My UserID          <--- confirm who you are 
+   Rohan Samuel, H00335119          <--- confirm who you are 
    F28PL Coursework 2, OCaml        <--- confirm what you're submitting
 
    You may assume variables and functions defined in earlier questions
@@ -43,6 +43,12 @@ let flatten_sorted_test1 _test_ctxt =
 
 (* TODO: write unit tests for `compare_exps'` and
    `compare_exps_sorted'` *)
+
+let compare_exps'_test _test_ctxt = 
+  assert_equal (flatten' (Add(Add(Var "a", Var "b"), Add(Var "c", Var "d")))) (flatten' (Add(Var "e", Add(Var "f", Add(Var "g", Var "h")))))
+
+let compare_exps_sorted_test _test_ctxt =
+  assert_equal (flatten_sorted' (Add(Add(Var "a", Var "b"), Add (Var "c", Var "d")))) (flatten_sorted' (Add(Var "e", Add(Var "f", Add(Var "g", Var "h")))))
 
 (* list of unit tests *)
 let unit_tests =

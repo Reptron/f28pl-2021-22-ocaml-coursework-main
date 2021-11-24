@@ -1,6 +1,6 @@
 (* Coursework template
 
-   My Name here, My UserID          <--- confirm who you are 
+   Rohan Samuel, H00335119          <--- confirm who you are 
    F28PL Coursework 2, OCaml        <--- confirm what you're submitting
 
    You may assume variables and functions defined in earlier questions
@@ -36,20 +36,43 @@ let rec string_of_matrix m =
          string_of_row row ^ "\n" ^
          string_of_matrix rest
 
+let rec length_of_matrix: 'a list -> int = fun y ->
+match y with [] -> 0 |
+(y :: rem) -> length_of_matrix rem + 1;;
+
 (* test whether a list of lists of integers represents a matrix.  The
    length of each row should be equal.*)
-let is_matrix x =
-  failwith "not implemented yet"
+let is_matrix x = let rec is_matrix_step : int list list -> bool = 
+fun x -> match x with
+[] -> true | [[]] -> true | a :: [] -> true | a :: b :: c ->
+if (length_of_matrix a == length_of_matrix b) then is_matrix_step (b :: c) else false
+in is_matrix_step x;;
 
 (* function matrixshape takes the matrix, and calculates the number of
    columns and rows *)
 let matrix_shape x =
-  failwith "not implemented yet"
+  match x with [] -> (0,0) |
+  [[]] -> (0,1) |
+  (x :: rem) -> (length_of_matrix x, 1 + length_of_matrix rem)
+
+let rec addition: int_seq -> int_seq -> int_seq = fun x y ->
+match x, y with [], _ -> [] |
+_, [] -> [] |
+r1 :: rem, r2 :: rem2 -> (r1 + r2) :: (addition rem rem2);;
 
 (* matrix addition *)
-let rec matrix_add x y =
-  failwith "not implemented yet"
+let [@warning "-8"] rec matrix_add x y =
+match x,y with [],[] -> [[]] |
+(x :: bott, y :: bott2) -> (addition x y) :: (matrix_add bott bott2)
 
 (* matrix multiplication *)
 let matrix_mult x y =
-  failwith "not implemented yet"
+  let rec multiplication: int_seq list -> int_matrix -> int_matrix -> int_matrix =
+  fun acc matrix matrix2 ->
+  match matrix, matrix2 with (matrix_rows, matrix2_rows) ->
+  match matrix_rows, matrix2_rows with [], [] -> acc |
+  [], matrix2_rows -> acc |
+  matrix_rows, [] -> [] |
+  (matrix_rows :: matrix_rows_rem), (matrix2_cols) -> multiplication(acc @ ([dot (([matrix_rows])) ((matrix2_cols))])) (matrix_rows_rem) (matrix2_cols)
+  
+  int multiplication [] x y;;
