@@ -25,9 +25,9 @@ type complex_number = int * int
 
 (* addition of two complex integers *)
 let complex_add (x1, y1) (x2, y2) =
-  ((x1+x2 , y1+y2));;
+  ((x1+x2 , y1+y2));; (*Displays the formula of adding complex integers*)
 
 (* multiplication of two complex integers *)
 let complex_mult (x1, y1) (x2, y2) =
-  ((x1*x2-y1*y2,x1*y2+y1*x2));;
+  ((x1*x2-y1*y2,x1*y2+y1*x2));; (*Displays the formula of multiplying complex integers*)
 

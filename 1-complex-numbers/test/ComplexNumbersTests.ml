@@ -39,17 +39,17 @@ let complex_mult_test1 _test_ctxt =
 (* write another unit test for complex_mult *)
 let complex_mult_test2 _test_ctxt =
   (* TODO *)
-  assert_equal (-11, 23) (complex_mult (3, 2) (1, 7))
+  assert_equal (-4, 39) (complex_mult (5, 2) (2, 7))
 
 (* write another unit test for complex_mult *)
 let complex_mult_test3 _test_ctxt =
   (* TODO *)
-  assert_equal (-11, 23) (complex_mult (3, 2) (1, 7))
+  assert_equal (-16, 38) (complex_mult (4, 3) (2, 8))
 
 (* write another unit test for complex_mult *)
 let complex_mult_test4 _test_ctxt =
   (* TODO *)
-  assert_equal (-11, 23) (complex_mult (3, 2) (1, 7))
+  assert_equal (-21, 57) (complex_mult (5, 4) (3, 9))
 
 (* list of unit tests *)
 let unit_tests =
