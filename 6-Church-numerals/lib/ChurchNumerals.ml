@@ -25,7 +25,7 @@ type church_numeral = (int -> int) -> int -> int
 let rec i2c : int -> church_numeral =
   function
   | 0 -> fun f x -> x                     (*Return x *)
-  | i -> fun f x -> f(i2c (i - 1) f x);;  (*Function applied recursively using i - 1 *)
+  | i -> fun f x -> f(i2c (i - 1) f x);;  (*The function is applied recursively using i - 1 *)
 
 (* Pass the increment function and 0 into the Church numeral, so that
    every application of f increases the output by 1. As the starting

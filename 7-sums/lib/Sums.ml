@@ -137,7 +137,7 @@ let rec flatten_sorted : exp -> var_list =
   function
   | Zero       -> ["0"]
   | Var x      -> ["" ^ x]
-  | Add (a, b) -> failwith "not impl"
+  | Add (a, b) -> flatten_sorted a @ flatten_sorted b
 
 (* compare expressions for equivalence (taking into account
    commutativity) *)

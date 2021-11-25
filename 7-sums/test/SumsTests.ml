@@ -45,10 +45,10 @@ let flatten_sorted_test1 _test_ctxt =
    `compare_exps_sorted'` *)
 
 let compare_exps'_test _test_ctxt = 
-  assert_equal (flatten' (Add(Add(Var "a", Var "b"), Add(Var "c", Var "d")))) (flatten' (Add(Var "e", Add(Var "f", Add(Var "g", Var "h")))))
+  assert_equal (flatten' (Add (Add (Var "x", Var "y"), Add (Var "z", Var "x")))) (flatten' (Add (Var "x", Add (Var "y", Add (Var "z", Var "x")))))
 
 let compare_exps_sorted_test _test_ctxt =
-  assert_equal (flatten_sorted' (Add(Add(Var "a", Var "b"), Add (Var "c", Var "d")))) (flatten_sorted' (Add(Var "e", Add(Var "f", Add(Var "g", Var "h")))))
+  assert_equal (flatten_sorted' (Add (Add (Var "x", Var "y"), Add (Var "z", Var "x")))) (flatten_sorted' (Add (Var "x", Add (Var "y", Add (Var "z", Var "x")))))
 
 (* list of unit tests *)
 let unit_tests =

@@ -36,6 +36,39 @@
 
 (* Ocaml is a programming language that supoorts a funtional style. A function maps an input to an output. The same input produces 
 the same output, meaning extra infromation is non-exsistant and unmainatained, by functions, between usages of the function.
+
+A function signature is a signature that defines a function. A signature is determined automatically by the compiler based on how the 
+function handles arguments. An example of a function type signature is:
+
+   int -> int -> int
+
+Polymorphism is well-known to be used in object-oriented programming. There are three types of polymorphism:
+   Ad hoc Polymorphism: A type that permits a function to designate multiple, potentially diverse implementations based on a small number 
+   of individually stated types and combinations.
+   Parmetric Polypmorphism: A type that allows a function to be designed generically so that it can handle values in the same way regardless 
+   of type.
+   Subtype/Inclusion Polymorphism: A type that allows a function to take an object of a specific type T but also perform appropriately when 
+   supplied an object of a subtype S.
+
+   Ad hoc example:
+      float -> float -> float
+
+   Parametric example:
+      'a -> 'a list -> 'a list
+
+   Subtype/Incluse example: 
+   (We see ab as a subtype of abc. We also see that x has the type ab, so ab can be used in place of x and vice versa)
+      # type ab = [ `A | `B ];;
+      type ab = [ `A | `B ]
+      # type abc = [`A | `B | `C ];;
+      type abc = [ `A | `B | `C ]
+      # let x : ab = `A;;
+      val x : ab = `A
+      # let y : abc = x;;
+      # let y : abc = (x :> abc);;
+
+List types and tuple types (and their differences):
+
  *) 
 
 (* The following function adds two numbers together. It has types ... *)
